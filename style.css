@@ -1,0 +1,7 @@
+body {
+  font-family: 'Open Sans', 'san-serif' ; border: 0 none;
+}
+
+div#visualization_div {
+  height: 600px;
+}
