@@ -1,5 +1,6 @@
 body {
-  font-family: 'Open Sans', 'san-serif' ; border: 0 none;
+  font-family: 'Open Sans', sans-serif ;
+  border: 0 none;
 }
 
 div#visualization_div {
