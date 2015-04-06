@@ -6,3 +6,11 @@ body {
 div#visualization_div {
   height: 600px;
 }
+
+#boxRow{
+  padding-top:3em;
+}
+
+li{
+  list-style: none;
+}

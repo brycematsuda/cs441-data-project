@@ -1,26 +1,71 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-  <link rel="stylesheet" type="text/css" href="style.css">
-  <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
-  <title>A Game of Platforms</title>
-  <script type="text/javascript" src="http://www.google.com/jsapi"></script>
-  <script type="text/javascript" src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
-  <script type="text/javascript" src="script.js"></script>
+    <title>A Game of Platforms</title>
+
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+
+    <script type="text/javascript" src="http://www.google.com/jsapi"></script>
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="script.js"></script>
 </head>
 <body>
- <div class="container">
-  <div class="page-header">
-   <h1>Releases</h1>
- </div>
- <div class="container" id="visualization_div"></div>
-</div>
-<footer class="footer">
- <div class="container">
-   <p class="text-muted">Caleb Piekstra</p>
- </div>
-</footer>
+    <div class="container">
+        <div class="page-header">
+          <h1>Releases</h1>
+        </div>
+
+        <div class="row">
+            <div class="form-group col-md-2">
+                <label for="startDate">StartDate</label>
+                <div class="input-group col-md-1">
+                    <span class="input-group-btn">
+                        <input id="startDate" type="text" class="form-control" ng-model="year" value="2012">
+                        <button class="btn btn-default" type="button" ng-model="year" ng-disabled="year<2003" ng-click="minus()"><</button>
+                        <button class="btn btn-default" type="button" ng-model="year" ng-disabled="year>2013" ng-click="plus()">></button>
+                    </span>
+                </div><!-- /input-group -->
+            </div>
+
+            <div class="form-group col-md-2">
+                <label for="startDate">Interval in years</label>
+                <div class="input-group col-md-1">
+                    <span class="input-group-btn">
+                        <input id="interval" type="text" class="form-control" ng-model="year" value="1">
+                        <button class="btn btn-default" type="button" ng-model="year" ng-disabled="year<2003" ng-click="minus()"><</button>
+                        <button class="btn btn-default" type="button" ng-model="year" ng-disabled="year>2013" ng-click="plus()">></button>
+                    </span>
+                </div><!-- /input-group -->
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-2"id="boxRow">
+                <li><label><input type="checkbox" value="Xbox One" checked>Xbox One</label></li>
+                <li><label><input type="checkbox" value="PC" checked>PC</label></li>
+                <li><label><input type="checkbox" value="Nintendo 3DS" checked>Nintendo 3DS</label></li>
+                <li><label><input type="checkbox" value="PlayStation 3" checked>PlayStation 3</label></li>
+                <li><label><input type="checkbox" value="PlayStation 4" checked>PlayStation 4</label></li>
+                <li><label><input type="checkbox" value="Xbox 360" checked>Xbox 360</label></li>
+            </div>
+
+            <div class="col-md-9">
+                <div  id="visualization_div" style="height: 360px; width: 600px;">
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+
+    <footer class="footer">
+        <div class="container">
+        <p class="text-muted">Bryce Matsuda | Caleb Piekstra | Max Robinson</p>
+        </div>
+    </footer>
 </body>
 </html>
