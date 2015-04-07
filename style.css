@@ -4,13 +4,14 @@ body {
 }
 
 div#visualization_div {
-  height: 600px;
+  height: 360px; 
+  width: 600px;
 }
 
-#boxRow{
-  padding-top:3em;
+#boxRow {
+  padding-top: 3em;
 }
 
-li{
+li {
   list-style: none;
 }

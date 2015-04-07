@@ -2,13 +2,10 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <title>A Game of Platforms</title>
-
     <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-
     <link rel="stylesheet" type="text/css" href="style.css">
     <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
-
     <script type="text/javascript" src="http://www.google.com/jsapi"></script>
     <script type="text/javascript" src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
     <script type="text/javascript" src="script.js"></script>
@@ -25,8 +22,8 @@
                 <div class="input-group col-md-1">
                     <span class="input-group-btn">
                         <input id="startDate" type="text" class="form-control" ng-model="year" value="2012">
-                        <button class="btn btn-default" type="button" ng-model="year" ng-disabled="year<2003" ng-click="minus()"><</button>
-                        <button class="btn btn-default" type="button" ng-model="year" ng-disabled="year>2013" ng-click="plus()">></button>
+                        <button class="btn btn-default" type="button" ng-model="year" ng-disabled="year < 2003" ng-click="minus()">&lt;</button>
+                        <button class="btn btn-default" type="button" ng-model="year" ng-disabled="year > 2013" ng-click="plus()">&gt;</button>
                     </span>
                 </div><!-- /input-group -->
             </div>
@@ -36,25 +33,25 @@
                 <div class="input-group col-md-1">
                     <span class="input-group-btn">
                         <input id="interval" type="text" class="form-control" ng-model="year" value="1">
-                        <button class="btn btn-default" type="button" ng-model="year" ng-disabled="year<2003" ng-click="minus()"><</button>
-                        <button class="btn btn-default" type="button" ng-model="year" ng-disabled="year>2013" ng-click="plus()">></button>
+                        <button class="btn btn-default" type="button" ng-model="year" ng-disabled="year < 2003" ng-click="minus()">&lt;</button>
+                        <button class="btn btn-default" type="button" ng-model="year" ng-disabled="year > 2013" ng-click="plus()">&gt;</button>
                     </span>
                 </div><!-- /input-group -->
             </div>
         </div>
 
         <div class="row">
-            <div class="col-md-2"id="boxRow">
-                <li><label><input type="checkbox" value="Xbox One" checked>Xbox One</label></li>
-                <li><label><input type="checkbox" value="PC" checked>PC</label></li>
-                <li><label><input type="checkbox" value="Nintendo 3DS" checked>Nintendo 3DS</label></li>
-                <li><label><input type="checkbox" value="PlayStation 3" checked>PlayStation 3</label></li>
-                <li><label><input type="checkbox" value="PlayStation 4" checked>PlayStation 4</label></li>
-                <li><label><input type="checkbox" value="Xbox 360" checked>Xbox 360</label></li>
+            <div class="col-md-2" id="boxRow">
+                <li><label><input type="checkbox" value="Xbox One" checked> Xbox One</label></li>
+                <li><label><input type="checkbox" value="PC" checked> PC</label></li>
+                <li><label><input type="checkbox" value="Nintendo 3DS" checked> Nintendo 3DS</label></li>
+                <li><label><input type="checkbox" value="PlayStation 3" checked> PlayStation 3</label></li>
+                <li><label><input type="checkbox" value="PlayStation 4" checked> PlayStation 4</label></li>
+                <li><label><input type="checkbox" value="Xbox 360" checked> Xbox 360</label></li>
             </div>
 
             <div class="col-md-9">
-                <div  id="visualization_div" style="height: 360px; width: 600px;">
+                <div id="visualization_div">
                 </div>
             </div>
         </div>
