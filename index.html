@@ -1,40 +1,43 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html ng-app="agop" xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <title>A Game of Platforms</title>
     <meta http-equiv="content-type" content="text/html; charset=utf-8" />
     <link rel="stylesheet" type="text/css" href="style.css">
     <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js"></script>
     <script type="text/javascript" src="http://www.google.com/jsapi"></script>
     <script type="text/javascript" src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
     <script type="text/javascript" src="script.js"></script>
+    <script type="text/javascript" src="data-controller.js"></script>
 </head>
 <body>
     <div class="container">
+        
         <div class="page-header">
           <h1>Releases</h1>
         </div>
 
         <div class="row">
             <div class="form-group col-md-2">
-                <label for="startDate">StartDate</label>
-                <div class="input-group col-md-1">
+                <label for="startYear">Start Year</label>
+                <div class="input-group col-md-1" ng-controller="ButtonController">
                     <span class="input-group-btn">
-                        <input id="startDate" type="text" class="form-control" ng-model="year" value="2012">
-                        <button class="btn btn-default" type="button" ng-model="year" ng-disabled="year < 2003" ng-click="minus()">&lt;</button>
-                        <button class="btn btn-default" type="button" ng-model="year" ng-disabled="year > 2013" ng-click="plus()">&gt;</button>
+                        <input id="startYear" type="text" class="form-control" ng-model="startYear" value="{{ startYear }}">
+                        <button class="btn btn-default" type="button" ng-model="startYear" ng-disabled="startYear < 2004" ng-click="minusStart()">&lt;</button>
+                        <button class="btn btn-default" type="button" ng-model="startYear" ng-disabled="startYear > 2013" ng-click="plusStart()">&gt;</button>
                     </span>
                 </div><!-- /input-group -->
             </div>
 
             <div class="form-group col-md-2">
-                <label for="startDate">Interval in years</label>
-                <div class="input-group col-md-1">
+                <label for="interval">Interval</label>
+                <div class="input-group col-md-1" ng-controller="ButtonController">
                     <span class="input-group-btn">
-                        <input id="interval" type="text" class="form-control" ng-model="year" value="1">
-                        <button class="btn btn-default" type="button" ng-model="year" ng-disabled="year < 2003" ng-click="minus()">&lt;</button>
-                        <button class="btn btn-default" type="button" ng-model="year" ng-disabled="year > 2013" ng-click="plus()">&gt;</button>
+                        <input id="interval" type="text" class="form-control" ng-model="interval" value="{{ interval }}">
+                        <button class="btn btn-default" type="button" ng-model="interval" ng-disabled="interval < 1" ng-click="minusInterval()">&lt;</button>
+                        <button class="btn btn-default" type="button" ng-model="interval" ng-disabled="interval > 9" ng-click="plusInterval()">&gt;</button>
                     </span>
                 </div><!-- /input-group -->
             </div>
@@ -54,6 +57,7 @@
                 <div id="visualization_div">
                 </div>
             </div>
+            
         </div>
 
 
