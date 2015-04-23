@@ -25,19 +25,19 @@
                 <div class="input-group col-md-1" ng-controller="ButtonController">
                     <span class="input-group-btn">
                         <input id="startYear" type="text" class="form-control" ng-model="startYear" value="{{ startYear }}">
-                        <button class="btn btn-default" type="button" ng-model="startYear" ng-disabled="startYear < 2004" ng-click="minusStart()">&lt;</button>
-                        <button class="btn btn-default" type="button" ng-model="startYear" ng-disabled="startYear > 2013" ng-click="plusStart()">&gt;</button>
+                        <button class="btn btn-default" type="button" ng-model="startYear" ng-disabled="startYear < 2006" ng-click="minusStart()">&lt;</button>
+                        <button class="btn btn-default" type="button" ng-model="startYear" ng-disabled="startYear > 2014" ng-click="plusStart()">&gt;</button>
                     </span>
                 </div><!-- /input-group -->
             </div>
 
             <div class="form-group col-md-2">
-                <label for="interval">Interval</label>
+                <label for="endYear">End Year</label>
                 <div class="input-group col-md-1" ng-controller="ButtonController">
                     <span class="input-group-btn">
-                        <input id="interval" type="text" class="form-control" ng-model="interval" value="{{ interval }}">
-                        <button class="btn btn-default" type="button" ng-model="interval" ng-disabled="interval < 1" ng-click="minusInterval()">&lt;</button>
-                        <button class="btn btn-default" type="button" ng-model="interval" ng-disabled="interval > 9" ng-click="plusInterval()">&gt;</button>
+                        <input id="endYear" type="text" class="form-control" ng-model="endYear" value="{{ endYear }}">
+                        <button class="btn btn-default" type="button" ng-model="endYear" ng-disabled="endYear < 2006" ng-click="minusEnd()">&lt;</button>
+                        <button class="btn btn-default" type="button" ng-model="endYear" ng-disabled="endYear > 2014" ng-click="plusEnd()">&gt;</button>
                     </span>
                 </div><!-- /input-group -->
             </div>
@@ -45,12 +45,14 @@
 
         <div class="row">
             <div class="col-md-2" id="boxRow">
-                <li><label><input type="checkbox" value="Xbox One" checked> Xbox One</label></li>
                 <li><label><input type="checkbox" value="PC" checked> PC</label></li>
-                <li><label><input type="checkbox" value="Nintendo 3DS" checked> Nintendo 3DS</label></li>
                 <li><label><input type="checkbox" value="PlayStation 3" checked> PlayStation 3</label></li>
                 <li><label><input type="checkbox" value="PlayStation 4" checked> PlayStation 4</label></li>
+                <li><label><input type="checkbox" value="Xbox One" checked> Xbox One</label></li>
                 <li><label><input type="checkbox" value="Xbox 360" checked> Xbox 360</label></li>
+                <li><label><input type="checkbox" value="Wii U" checked> Wii U</label></li>
+                <li><label><input type="checkbox" value="Wii" checked> Wii</label></li>
+                <li><label><input type="checkbox" value="Nintendo 3DS" checked> Nintendo 3DS</label></li>
             </div>
 
             <div class="col-md-9">

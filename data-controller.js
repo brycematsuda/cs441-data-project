@@ -12,9 +12,9 @@ var agop = angular.module('agop', []);
 agop.controller('ButtonController', ['$scope', function($scope) {
 
   // At the beginning of execution,
-  // the default start and interval for now is 2010 and 1
-  $scope.startYear = 2010;
-  $scope.interval = 1;
+  // the default start and end year is 2005 and 2015, respectively.
+  $scope.startYear = 2005;
+  $scope.endYear = 2015;
 
   // minusStart():
   // decrements start year
@@ -28,16 +28,16 @@ agop.controller('ButtonController', ['$scope', function($scope) {
     $scope.startYear = $scope.startYear + 1;
   };
 
-  // minusInterval():
-  // decrements end interval
-  $scope.minusInterval = function(){
-    $scope.interval = $scope.interval - 1;
+  // minusEnd():
+  // decrements end year
+  $scope.minusEnd = function(){
+    $scope.endYear = $scope.endYear - 1;
   };
 
-  // plusInterval():
-  // increments end interval
-  $scope.plusInterval = function(){
-    $scope.interval = $scope.interval + 1;
+  // plusEnd():
+  // increments end year
+  $scope.plusEnd = function(){
+    $scope.endYear = $scope.endYear + 1;
   };
 
 }]);
