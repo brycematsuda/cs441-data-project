@@ -84,9 +84,7 @@ agop.controller('ButtonController', function($scope, consoleService) {
       duration: 850,
       easing: 'in'
     },
-    "bar": {"groupWidth": "95%"},
     "vAxis": {"title": "Number of Releases",
-                  // "viewWindow" : {max : 3000},
                   "textStyle" : { color: "black",
                   fontName: "Open Sans",
                   fontSize: 12,
@@ -97,8 +95,9 @@ agop.controller('ButtonController', function($scope, consoleService) {
                   fontSize: 14,
                   bold: false,
                   italic: false }},
-                  "hAxis": {"title": "Years",
+    "hAxis": {"title": "Years",
                   "format": '####',
+                  gridlines : { count : -1 },
                   "textStyle" : { color: "black",
                   fontName: "Open Sans",
                   fontSize: 12,
@@ -170,6 +169,7 @@ agop.controller('ButtonController', function($scope, consoleService) {
       y++;
     }
 
+
     // var consoleList = consoleService.getConsoles();
      console.log(consoleArray);
 
@@ -184,8 +184,16 @@ agop.controller('ButtonController', function($scope, consoleService) {
 
       }
     // Draw the chart for selected year.
-    $scope.chart.draw(views[thisYear + "," + endYear].toDataTable(), options);
-
+    if($scope.endYear - $scope.startYear <=0 ){
+        options.hAxis.gridlines.count = -1;
+        options.hAxis.ticks = [$scope.startYear];
+        $scope.chart.draw(views[thisYear + "," + endYear].toDataTable(), options);
+    }
+    else{
+        options.hAxis.gridlines.count = $scope.endYear - $scope.startYear +1;
+        options.hAxis.ticks = null;
+        $scope.chart.draw(views[thisYear + "," + endYear].toDataTable(), options);
+    }
   };
 
   // minusStart():
