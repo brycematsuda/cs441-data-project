@@ -127,16 +127,13 @@ console.log(views[thisYear + "," + endYear]);
 
     // Draw the chart for selected year.
     if($scope.endYear - $scope.startYear <=0 ){
-            var options2 = options
-            options2.hAxis.gridlines.count = -1;
-            $scope.chart.draw(views[thisYear + "," + endYear].toDataTable(), options2);
-    }
-    else if($scope.endYear - $scope.startYear <=5 ){
-        var options2 = options
-        options2.hAxis.gridlines.count = $scope.endYear - $scope.startYear +1;
-        $scope.chart.draw(views[thisYear + "," + endYear].toDataTable(), options2);
+        options.hAxis.gridlines.count = -1;
+        options.hAxis.ticks = [$scope.startYear];
+        $scope.chart.draw(views[thisYear + "," + endYear].toDataTable(), options);
     }
     else{
+        options.hAxis.gridlines.count = $scope.endYear - $scope.startYear +1;
+        options.hAxis.ticks = null;
         $scope.chart.draw(views[thisYear + "," + endYear].toDataTable(), options);
     }
   };
