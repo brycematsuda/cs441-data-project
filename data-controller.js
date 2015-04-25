@@ -37,9 +37,7 @@ agop.controller('ButtonController', ['$scope', function($scope) {
       duration: 850,
       easing: 'in'
     },
-    "bar": {"groupWidth": "95%"},
     "vAxis": {"title": "Number of Releases",
-                  // "viewWindow" : {max : 3000},
                   "textStyle" : { color: "black",
                   fontName: "Open Sans",
                   fontSize: 12,
@@ -50,8 +48,9 @@ agop.controller('ButtonController', ['$scope', function($scope) {
                   fontSize: 14,
                   bold: false,
                   italic: false }},
-                  "hAxis": {"title": "Years",
+    "hAxis": {"title": "Years",
                   "format": '####',
+                  gridlines : { count : -1 },
                   "textStyle" : { color: "black",
                   fontName: "Open Sans",
                   fontSize: 12,
@@ -116,10 +115,6 @@ agop.controller('ButtonController', ['$scope', function($scope) {
     // yet, create it.
     if (views[thisYear + "," + endYear] === undefined) {
 
-
-        // var data2 = data.Lf.sort(function(arr1, arr2){
-        //   return arr1.c[0].v - arr2.c[0].v;
-        // });
 var thisYear = $scope.startYear;
 var endYear = $scope.endYear;
 views[thisYear + "," + endYear] = new google.visualization.DataView(data);
@@ -131,10 +126,19 @@ views[thisYear + "," + endYear].setColumns([0, 1, 2, 3, 4, 5, 6, 7, 8]);
 console.log(views[thisYear + "," + endYear]);
 
     // Draw the chart for selected year.
-    $scope.chart.draw(views[thisYear + "," + endYear].toDataTable(), options);
-    console.log("Drawing?");
-
-
+    if($scope.endYear - $scope.startYear <=0 ){
+            var options2 = options
+            options2.hAxis.gridlines.count = -1;
+            $scope.chart.draw(views[thisYear + "," + endYear].toDataTable(), options2);
+    }
+    else if($scope.endYear - $scope.startYear <=5 ){
+        var options2 = options
+        options2.hAxis.gridlines.count = $scope.endYear - $scope.startYear +1;
+        $scope.chart.draw(views[thisYear + "," + endYear].toDataTable(), options2);
+    }
+    else{
+        $scope.chart.draw(views[thisYear + "," + endYear].toDataTable(), options);
+    }
   };
 
   // minusStart():
