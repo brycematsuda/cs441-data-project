@@ -1,6 +1,6 @@
 /**
 * data-controller.js
-* 
+*
 * Data controllers that defines UI behavior on AGOP visualization.
 *
 */
@@ -14,7 +14,7 @@ agop.controller('ButtonController', ['$scope', function($scope) {
   // At the beginning of execution,
   // the default start and end year is 2005 and 2015, respectively.
   $scope.startYear = 2005;
-  $scope.endYear = 2015;
+  $scope.endYear = 2014;
 
   // minusStart():
   // decrements start year
@@ -25,13 +25,17 @@ agop.controller('ButtonController', ['$scope', function($scope) {
   // plusStart():
   // increments start year
   $scope.plusStart = function(){
-    $scope.startYear = $scope.startYear + 1;
+    if($scope.endYear > $scope.startYear){
+      $scope.startYear = $scope.startYear + 1;
+    }
   };
 
   // minusEnd():
   // decrements end year
   $scope.minusEnd = function(){
-    $scope.endYear = $scope.endYear - 1;
+    if($scope.startYear < $scope.endYear){
+      $scope.endYear = $scope.endYear - 1;
+    }
   };
 
   // plusEnd():

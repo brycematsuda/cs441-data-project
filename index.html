@@ -14,15 +14,15 @@
 </head>
 <body>
     <div class="container">
-        
+
         <div class="page-header">
           <h1>Releases</h1>
         </div>
 
-        <div class="row">
+        <div class="row" ng-controller="ButtonController">
             <div class="form-group col-md-2">
                 <label for="startYear">Start Year</label>
-                <div class="input-group col-md-1" ng-controller="ButtonController">
+                <div class="input-group col-md-1">
                     <span class="input-group-btn">
                         <input id="startYear" type="text" class="form-control" ng-model="startYear" value="{{ startYear }}">
                         <button class="btn btn-default" type="button" ng-model="startYear" ng-disabled="startYear < 2006" ng-click="minusStart()">&lt;</button>
@@ -33,7 +33,7 @@
 
             <div class="form-group col-md-2">
                 <label for="endYear">End Year</label>
-                <div class="input-group col-md-1" ng-controller="ButtonController">
+                <div class="input-group col-md-1">
                     <span class="input-group-btn">
                         <input id="endYear" type="text" class="form-control" ng-model="endYear" value="{{ endYear }}">
                         <button class="btn btn-default" type="button" ng-model="endYear" ng-disabled="endYear < 2006" ng-click="minusEnd()">&lt;</button>
@@ -59,7 +59,7 @@
                 <div id="visualization_div">
                 </div>
             </div>
-            
+
         </div>
 
 
