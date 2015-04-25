@@ -1,6 +1,6 @@
 /**
 * data-controller.js
-* 
+*
 * Data controllers that defines UI behavior on AGOP visualization.
 *
 * This code is a modified version of Dr. Crenshaw's code from
