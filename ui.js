@@ -45,7 +45,7 @@ google.load('visualization', '1', {packages: ['corechart']});
                                          fontSize: 14,
                                          bold: false,
                                          italic: false }},
-          "legend": { "position": "none" }}
+          "legend": { "position": "right" }}
     })};
 
     google.setOnLoadCallback(drawVisualization);

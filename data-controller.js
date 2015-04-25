@@ -57,7 +57,7 @@ agop.controller('ButtonController', ['$scope', function($scope) {
                            fontSize: 14,
                            bold: false,
                            italic: false }},
-            "legend": { "position": "none" }
+            "legend": { "position": "right" }
     };
 
     // The table id for the google fusion table that holds the data we want to query
