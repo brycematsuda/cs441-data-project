@@ -7,55 +7,16 @@
 * the project: The Librarians
 */
 
+google.load('visualization', '1', {packages: ['corechart']});
+google.setOnLoadCallback(function() {
+  angular.bootstrap(document.body, ['agop']);
+    });
+
 var agop = angular.module('agop', []);
-
-agop.service('consoleService', function() {
-  var consoleList = [];
-
-  var setConsoles = function(list){
-    this.consoleList = list;
-  }
-
-  var getConsoles = function(){
-    return consoleList;
-  }
-
-  return {
-    setConsoles: setConsoles,
-    getConsoles: getConsoles
-  };
-
-});
-
-agop.controller('CheckboxController', function($scope, consoleService){
-  // List of consoles that we will be using in the simulation
-  $scope.consoles = {"PC": true, "PlayStation 4": true, "PlayStation 3": true, "Xbox One": true, "Xbox 360": true, "Wii U": true, "Wii": true, "Nintendo 3DS": true};
-
-  consoleService.setConsoles($scope.consoles);
-  // change()
-  // Get new list of consoles to display on graph.
-  $scope.change = function() {
-    var consoleArray = []
-
-    var y = 0;
-
-    for (var x in $scope.consoles) {
-      if ($scope.consoles[x]){
-        consoleArray.push(y + 1);
-      }
-      y++;
-    }
-    consoleService.setConsoles(consoleArray);
-    angular.element(document.getElementById("rows")).scope().get();
-  };
-
-
-});
-
 
 // ButtonController:
 // Data controller that defines button behavior
-agop.controller('ButtonController', function($scope, consoleService) {
+agop.controller('ButtonController',  ['$scope', function($scope) {
 
   // At the beginning of execution,
   // the default start and end year is 2005 and 2015, respectively.
@@ -85,30 +46,30 @@ agop.controller('ButtonController', function($scope, consoleService) {
       easing: 'in'
     },
     "vAxis": {"title": "Number of Releases",
-                  "textStyle" : { color: "black",
+              "textStyle" : { color: "black",
                   fontName: "Open Sans",
                   fontSize: 12,
                   bold: false,
                   italic: false },
-                  "titleTextStyle" : { color: "black",
+              "titleTextStyle" : { color: "black",
                   fontName: "Open Sans",
                   fontSize: 14,
                   bold: false,
                   italic: false }},
     "hAxis": {"title": "Years",
-                  "format": '####',
+              "format": '####',
                   gridlines : { count : -1 },
-                  "textStyle" : { color: "black",
+              "textStyle" : { color: "black",
                   fontName: "Open Sans",
                   fontSize: 12,
                   bold: false,
                   italic: false },
-                  "titleTextStyle" : { color: "black",
+              "titleTextStyle" : { color: "black",
                   fontName: "Open Sans",
                   fontSize: 14,
                   bold: false,
                   italic: false }},
-                  "legend": { "position": "right" }
+    "legend": { "position": "right" }
                 };
 
     // The table id for the google fusion table that holds the data we want to query
@@ -146,7 +107,7 @@ agop.controller('ButtonController', function($scope, consoleService) {
         views[thisYear + "," + endYear].setColumns([0, 1, 2, 3, 4, 5, 6, 7, 8]);
 
 
-        console.log(views[thisYear + "," + endYear].toDataTable());
+        // console.log(views[thisYear + "," + endYear].toDataTable());
 
         // Draw the chart for 2014.
         $scope.chart.draw(views[thisYear + "," + endYear].toDataTable(), options);
@@ -159,41 +120,41 @@ agop.controller('ButtonController', function($scope, consoleService) {
     //    Get a new chart.
     $scope.get = function() {
 
-    var consoleArray = []
-    var y = 0;
+      var consoleArray = []
+      var y = 0;
 
-    for (var x in $scope.consoles) {
-      if ($scope.consoles[x]){
-        consoleArray.push(y + 1);
+      for (var x in $scope.consoles) {
+        if ($scope.consoles[x]){
+          consoleArray.push(y + 1);
+        }
+        y++;
       }
-      y++;
-    }
 
 
-    // var consoleList = consoleService.getConsoles();
-     console.log(consoleArray);
+      // var consoleList = consoleService.getConsoles();
+      // console.log(consoleArray);
 
-    // If the view of data for the selected year hasn't been created
-    // yet, create it.
-    if (views[thisYear + "," + endYear] === undefined) {
-      var thisYear = $scope.startYear;
-      var endYear = $scope.endYear;
-      views[thisYear + "," + endYear] = new google.visualization.DataView(data);
-      views[thisYear + "," + endYear].setRows(views[thisYear + "," + endYear].getFilteredRows([{column: 0, minValue: thisYear, maxValue: endYear}]));
-      views[thisYear + "," + endYear].setColumns([0].concat(consoleArray));
+      // If the view of data for the selected year hasn't been created
+      // yet, create it.
+      if (views[thisYear + "," + endYear] === undefined) {
+        var thisYear = $scope.startYear;
+        var endYear = $scope.endYear;
+        views[thisYear + "," + endYear] = new google.visualization.DataView(data);
+        views[thisYear + "," + endYear].setRows(views[thisYear + "," + endYear].getFilteredRows([{column: 0, minValue: thisYear, maxValue: endYear}]));
+        views[thisYear + "," + endYear].setColumns([0].concat(consoleArray));
 
       }
-    // Draw the chart for selected year.
-    if($scope.endYear - $scope.startYear <=0 ){
-        options.hAxis.gridlines.count = -1;
-        options.hAxis.ticks = [$scope.startYear];
-        $scope.chart.draw(views[thisYear + "," + endYear].toDataTable(), options);
-    }
-    else{
-        options.hAxis.gridlines.count = $scope.endYear - $scope.startYear +1;
-        options.hAxis.ticks = null;
-        $scope.chart.draw(views[thisYear + "," + endYear].toDataTable(), options);
-    }
+
+      // Draw the chart for selected year.
+      if($scope.endYear - $scope.startYear <=0 ){
+          options.hAxis.gridlines.count = -1;
+          options.hAxis.ticks = [$scope.startYear];
+      }
+      else{
+          options.hAxis.gridlines.count = $scope.endYear - $scope.startYear +1;
+          options.hAxis.ticks = null;
+      }
+      $scope.chart.draw(views[thisYear + "," + endYear].toDataTable(), options);
   };
 
   // minusStart():
@@ -230,6 +191,6 @@ agop.controller('ButtonController', function($scope, consoleService) {
 
   };
 
-});
+}]);
 
 

@@ -1,25 +1,27 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html ng-app="agop" xmlns="http://www.w3.org/1999/xhtml">
+<html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <title>A Game of Platforms</title>
     <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    
     <link rel="stylesheet" type="text/css" href="style.css">
     <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js"></script>
     <script type="text/javascript" src="http://www.google.com/jsapi"></script>
-    <script type="text/javascript" src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
     <!--script type="text/javascript" src="script.js"></script-->
     <script type="text/javascript" src="ui.js"></script>
     <script type="text/javascript" src="data-controller.js"></script>
 </head>
 <body>
-    <div class="container" ng-controller="ButtonController">
+    <div id="container" class="container" ng-controller="ButtonController">
 
 
         <div class="page-header">
-          <h1>AGoP</h1>
+          <h1>  A G<small>ame </small>o<small>f</small> P<small>latforms</small> </h1>
         </div>
+
+        <div google-chart chart="chartObject"></div>
 
         <div id="rows" class="row">
             <div class="form-group col-md-2">

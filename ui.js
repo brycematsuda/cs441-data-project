@@ -21,6 +21,11 @@ google.load('visualization', '1', {packages: ['corechart']});
                           italic: false },
           "title":"Video Game Releases Across Time by Platform",
           "titleFontSize": 12,
+          "animation": {
+            startup: true,
+            duration: 850,
+            easing: 'in'
+          },
           "vAxis": {"title": "Number of Releases",
                     "textStyle" : { color: "black",
                                          fontName: "Open Sans",
