@@ -1,3 +1,8 @@
+/**
+* ui.js
+*
+* Draws initial visualization graph.
+*/
 google.load('visualization', '1', {packages: ['corechart']});
     function drawVisualization() {
 

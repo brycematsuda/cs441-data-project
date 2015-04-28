@@ -15,11 +15,11 @@ google.setOnLoadCallback(function() {
 var agop = angular.module('agop', []);
 
 // ButtonController:
-// Data controller that defines button behavior
+// Data controller that defines button and checkbox behavior
 agop.controller('ButtonController',  ['$scope', function($scope) {
 
   // At the beginning of execution,
-  // the default start and end year is 2005 and 2015, respectively.
+  // the default start and end year is 2005 and 2014, respectively.
   $scope.startYear = 2005;
   $scope.endYear = 2014;
 
@@ -106,9 +106,6 @@ agop.controller('ButtonController',  ['$scope', function($scope) {
         views[thisYear + "," + endYear].setRows(views[thisYear + "," + endYear].getFilteredRows([{column: 0, minValue: thisYear, maxValue: endYear}]));
         views[thisYear + "," + endYear].setColumns([0, 1, 2, 3, 4, 5, 6, 7, 8]);
 
-
-        // console.log(views[thisYear + "," + endYear].toDataTable());
-
         // Draw the chart for 2014.
         $scope.chart.draw(views[thisYear + "," + endYear].toDataTable(), options);
 
@@ -117,22 +114,20 @@ agop.controller('ButtonController',  ['$scope', function($scope) {
       });
 
     // get()
-    //    Get a new chart.
+    // Get a new chart.
     $scope.get = function() {
 
+      // Convert new console array to respective
+      // column numbers on Google fusion table
       var consoleArray = []
-      var y = 0;
+      var num = 0;
 
       for (var x in $scope.consoles) {
         if ($scope.consoles[x]){
-          consoleArray.push(y + 1);
+          consoleArray.push(num + 1);
         }
-        y++;
+        num++;
       }
-
-
-      // var consoleList = consoleService.getConsoles();
-      // console.log(consoleArray);
 
       // If the view of data for the selected year hasn't been created
       // yet, create it.
@@ -158,15 +153,16 @@ agop.controller('ButtonController',  ['$scope', function($scope) {
   };
 
   // minusStart():
-  // decrements start year
+  // decrements start year and gets new graph
   $scope.minusStart = function(){
     $scope.startYear = $scope.startYear - 1;
     $scope.get();
   };
 
   // plusStart():
-  // increments start year
+  // increments start year and gets new graph
   $scope.plusStart = function(){
+    // Bounds checking
     if ($scope.startYear < $scope.endYear) {
       $scope.startYear = $scope.startYear + 1;
     }
@@ -174,8 +170,9 @@ agop.controller('ButtonController',  ['$scope', function($scope) {
   };
 
   // minusEnd():
-  // decrements end year
+  // decrements end year and gets new graph
   $scope.minusEnd = function(){
+    // Bounds checking
     if ($scope.endYear > $scope.startYear){
       $scope.endYear = $scope.endYear - 1;
     }
@@ -184,7 +181,7 @@ agop.controller('ButtonController',  ['$scope', function($scope) {
   };
 
   // plusEnd():
-  // increments end year
+  // increments end year and gets new graph
   $scope.plusEnd = function(){
     $scope.endYear = $scope.endYear + 1;
     $scope.get();
